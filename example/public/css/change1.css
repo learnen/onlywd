@@ -1,0 +1,35 @@
+	.index-content{
+		width: 100%;
+	}
+	.left-content-bottom span:nth-of-type(1){
+		display: none;
+	}
+	body,html{
+		font-size: 50%;
+	}
+	.index-group-content{
+		border: 5px solid #e5e5e5;
+	}
+	.little-left-square{
+		display: none;
+	}
+	h1{
+		font-size: 30px;
+		text-align: center;
+		display: block;
+	}
+	.index-group-left{
+		border-right: 3px solid green;
+	}
+	.little-left{
+		margin: 40px 0 10px;
+		margin-left: 2%;
+	}
+	.little-left-flower{
+		top: -15px;
+		left: 30px;
+		transform: translateX(-100%);
+	}
+	.little-left-ball{
+		top:10px;
+	}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>兴趣爱好</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link  href="../static/css/bootstrap.min.css" rel="stylesheet">
+<link  href="../static/css/main.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="screen and (max-width: 768px)" href="../static/css/change1.css" />
+<body>
+	<div class="index-top"></div>
+	<div class="index-content">
+		<h1 class="index-title">唯一的世界的博客</h1>
+		<div class="index-nav">
+			<a href="/">首页</a>
+			<a href="/myself">关于我</a>
+			<a href="/note">心得体会</a>
+			<a href="/hobby">兴趣爱好</a>
+			<a href="/little">闲言碎语</a>
+			<a href="/message">留言</a>
+		</div>
+		<div class="others-group">
+			<div class="others-group-title">
+				<a class="active" href="/">网站首页</a>
+				<a href="#">兴趣爱好</a>
+				<span>文字大多数时候会记录下最真实的感情</span>
+			</div>
+			<div class="index-group-top"></div>
+			<div class="index-group-content row">
+				<div class="index-group-left col-md-8">
+					<% for(var i = (id-1)*5 ; i < id*5; i++){  %>
+						 <% if(i < data.length){ %>
+						<div class="left-content">
+						<span class="left-content-title"><%- data[i].title %></span>
+						<img class="left-content-img" src="../uploads/<%= data[i].img %>">
+						<span class="left-content-describe"><%- data[i].describe %>
+						</span >
+
+						<div class="left-content-link" >
+							<a href="/hobby/<%= data[i].classify%>/<%= data[i].id%>">阅读全文>></a>
+						</div>
+						<div class="left-content-bottom">
+							<span>日期:<%= data[i].date %></span>
+							<span>作者:<%= data[i].author %></span>
+							<span>分类<%= data[i].classify %></span>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<% } %>
+
+					<% } %>
+
+					
+					<nav aria-label="Page navigation">
+					<ul class="pagination navigation">
+							<% if(id != 1){ %>
+							<li>
+								<a href="/hobby/<%= parseInt(id)-1%>" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<% } %>
+							<% for(var i = 1 ; i <= Math.ceil(data.length/5) ; i++){%>
+							  
+								<% if(i == id){ %>
+									 <li class="active">
+								<a>
+									<%= i%>
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+								<% }else{ %>
+									   <li>
+								<a href="/hobby/<%= i%>">
+									<%= i%>
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+								<% } %>
+
+							
+							   <% } %>
+							<% if(id != Math.ceil(data.length/5)){ %>
+							<li>
+								<a href="/hobby/<%= parseInt(id)+1%>" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+							<% } %>
+						</ul>
+					</nav>
+				</div>
+				<div class="index-group-right col-md-4">
+					<div class="right-group-list">
+						<a href="/hobby/diary">日记</a>
+						<a href="/hobby/enjoy">欣赏</a>
+						<a href="/hobby/life">程序人生</a>
+						<a href="/hobby/quotations">经典语录</a>
+						<div class="clear"></div>
+					</div>
+					<div class="right-group-remmond">
+							<div class="content-title">
+								<span>图文推荐</span>
+							</div>
+							<% for(var i = data.length-4 ; i< data.length ; i++  )  {%>
+								<%  if (data[i].classify == "html" || data[i].classify == "css" || data[i].classify == "javascript" || data[i].classify == "node") { %>
+								<a href="/note/<%= data[i].classify%>/<%= data[i].id%>" class="right-commond-group">
+									<img src="/uploads/<%= data[i].img%>" alt="">
+									<span><%= data[i].title%></span>
+									<span><%= data[i].classify%></span>
+									<!-- <span><%= data[i].date%></span> -->
+									<div class="clear"></div>
+								</a>
+								<% }else{ %>
+									<a href="/hobby/<%= data[i].classify%>/<%= data[i].id%>" class="right-commond-group">
+									<img src="/uploads/<%= data[i].img%>" alt="">
+									<span><%= data[i].title%></span>
+									<span><%= data[i].classify%></span>
+									<!-- <span><%= data[i].date%></span> -->
+									<div class="clear"></div>
+								</a>
+									<% } %>
+							<% } %>
+					</div>
+					<div class="right-group-rank">
+							<div class="content-title">
+								<span>点击排行</span>
+							</div>
+							<ol>
+								<% for(var i = 0 ; i< browse.length ; i++  )  {%>
+								<%  if (browse[i].classify == "html" || browse[i].classify == "css" || browse[i].classify == "javascript" || browse[i].classify == "node") { %>								
+								<li>
+									<a href="/note/<%= browse[i].classify%>/<%= browse[i].id%>"><%= browse[i].title%></a>
+								</li>
+								<% }else{ %>								
+								<li>
+									<a href="/hobby/<%= browse[i].classify%>/<%= browse[i].id%>"><%= browse[i].title%></a>
+								</li>
+								<% } %>		
+								<% } %>						
+							</ol>
+					</div>
+					<div class="right-group-bottom">
+							<span>印象山水</span>
+					</div>
+				</div>
+			</div>
+			<div class="index-group-bottom"></div>
+		</div>
+	</div>
+	<div class="index-bottom">
+			<span class="index-bottom-date">该博客的创意来自于</span>
+			<a class="index-bottom-link" href="http://www.yangqq.com/">http://www.yangqq.com/</a>
+			<span class="index-bottom-date">想做个人博客的可以上面的网址看看，有很不错的模块哟！</span>
+		</div>
+</body>
+<script type="text/javascript" src="../static/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap.js"></script>
+<script type="text/javascript" src="../static/filejs/basic.js"></script>
+</html>

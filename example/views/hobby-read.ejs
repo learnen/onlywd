@@ -1,0 +1,163 @@
+f
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>心得笔记</title>
+</head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link  href="../../static/css/bootstrap.min.css" rel="stylesheet">
+	<link  href="../../static/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen and (max-width: 768px)" href="../../static/css/change1.css" />
+<body>
+	<div class="index-top"></div>
+	<div class="index-content">
+		<h1 class="index-title">唯一的世界的博客</h1>
+		<div class="index-nav">
+			<a href="/">首页</a>
+			<a href="/myself">关于我</a>
+			<a href="/note">心得体会</a>
+			<a href="/hobby">兴趣爱好</a>
+			<a href="/little">闲言碎语</a>
+			<a href="/message">留言</a>
+		</div>
+		<div class="others-group">
+			<div class="others-group-title">
+				<a class="active" href="/">网站首页</a>
+				<a href="/hobby/<%= data.classify %>
+					">
+					<%= data.classify %></a>
+				<span>文字大多数时候会记录下最真实的感情</span>
+			</div>
+			<div class="index-group-top"></div>
+			<div class="index-group-content row">
+				<div class="index-group-left col-md-8">
+					<div class="read">
+						<div class="read-title">
+							<%= data.title%></div>
+						<div class="read-author">
+							<span>
+								发布时间:
+								<%= data.date%></span>
+							<span>
+								作者:
+								<%= data.author%></span>
+							<span>
+								阅读(
+								<%= data.browse%>)</span>
+						</div>
+						<div class="read-content">
+							<%- data.content%></div>
+						<div class="read-bottom">
+							<% if(id != 0){ %>
+							<a href="/hobby/<%= data.classify%>
+								/
+								<%= id%>">上一篇</a>
+							<% } %>
+
+							<% if(id != length-1){ %>
+							<a href="/hobby/<%= data.classify%>
+								/
+								<%= id+2%>">下一篇</a>
+							<% } %></div>
+						<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句"></div>
+						<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+						<script type="text/javascript">
+					window.changyan.api.config({
+					appid: 'cytcfHY0w',
+					conf: 'prod_7b41d568b4a1a26c0b96f58fa2a41c01'
+					});
+					</script>
+					</div>
+				</div>
+				<div class="index-group-right col-md-4">
+					<div class="right-group-list">
+						<a href="/hobby/diary">日记</a>
+						<a href="/hobby/enjoy">欣赏</a>
+						<a href="/hobby/life">程序人生</a>
+						<a href="/hobby/quotations">经典语录</a>
+						<div class="clear"></div>
+					</div>
+					<div class="right-group-remmond">
+						<div class="content-title">
+							<span>图文推荐</span>
+						</div>
+						<% for(var i = 0 ; i< browse.length ; i++  )  {%>
+						<%  if (browse[i].classify == "html" || browse[i].classify == "css" || browse[i].classify == "javascript" || browse[i].classify == "node") { %>
+						<a href="/note/<%= browse[i].classify%>
+							/
+							<%= browse[i].id%>
+							" class="right-commond-group">
+							<img src="/uploads/<%= browse[i].img%>
+							" alt="">
+							<span>
+								<%= browse[i].title%></span>
+							<span>
+								<%= browse[i].classify%></span>
+							<!-- <span>
+							<%= browse[i].date%></span>
+						-->
+						<div class="clear"></div>
+					</a>
+					<% }else{ %>
+					<a href="/hobby/<%= browse[i].classify%>
+						/
+						<%= browse[i].id%>
+						" class="right-commond-group">
+						<img src="/uploads/<%= browse[i].img%>
+						" alt="">
+						<span>
+							<%= browse[i].title%></span>
+						<span>
+							<%= browse[i].classify%></span>
+						<!-- <span>
+						<%= browse[i].date%></span>
+					-->
+					<div class="clear"></div>
+				</a>
+				<% } %>
+				<% } %></div>
+			<div class="right-group-rank">
+				<div class="content-title">
+					<span>点击排行</span>
+				</div>
+				<ol>
+					<% for(var i = 0 ; i< browse.length ; i++  )  {%>
+					<%  if (browse[i].classify == "html" || browse[i].classify == "css" || browse[i].classify == "javascript" || browse[i].classify == "node") { %>
+					<li>
+						<a href="/note/<%= browse[i].classify%>
+							/
+							<%= browse[i].id%>
+							">
+							<%= browse[i].title%></a>
+					</li>
+					<% }else{ %>
+					<li>
+						<a href="/hobby/<%= browse[i].classify%>
+							/
+							<%= browse[i].id%>
+							">
+							<%= browse[i].title%></a>
+					</li>
+					<% } %>
+					<% } %></ol>
+			</div>
+			<div class="right-group-bottom">
+				<span>印象山水</span>
+			</div>
+		</div>
+	</div>
+	<div class="index-group-bottom"></div>
+	<div class="clear"></div>
+</div>
+</div>
+<div class="index-bottom">
+<span class="index-bottom-date">该博客的创意来自于</span>
+<a class="index-bottom-link" href="http://www.yangqq.com/">http://www.yangqq.com/</a>
+<span class="index-bottom-date">想做个人博客的可以上面的网址看看，有很不错的模块哟！</span>
+</div>
+</body>
+<script type="text/javascript" src="../../static/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../../static/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../static/filejs/basic.js"></script>
+</html>
